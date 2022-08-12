@@ -16,8 +16,8 @@ LABEL Maintainer="WebApi"
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build-env
  
 WORKDIR /app
-COPY ./publish ./
-RUN dotnet publish ./HTTPie/HTTPie.csproj -c Release --self-contained --use-current-runtime -p:AssemblyName=http -p:PublishSingleFile=true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true -o ./artifacts
+COPY ./ ./
+RUN dotnet publish ./WebApi.csproj -c Release --self-contained --use-current-runtime -p:AssemblyName=http -p:PublishSingleFile=true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true -o ./artifacts
  
 FROM base AS final
 COPY --from=build-env /app/artifacts/http /root/.dotnet/tools/http
