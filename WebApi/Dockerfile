@@ -17,7 +17,6 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build-env
  
 WORKDIR /app
 COPY ./publish ./
-COPY ./build/version.props ./Directory.Build.props
 RUN dotnet publish ./HTTPie/HTTPie.csproj -c Release --self-contained --use-current-runtime -p:AssemblyName=http -p:PublishSingleFile=true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true -o ./artifacts
  
 FROM base AS final
