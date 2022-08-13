@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.AuthController">
+            <summary>
+            权限Api
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.GetToken(WebApi.Controllers.LoginUserArgs)">
+            <summary>
+            根据用户账号和密码获取Token。
+            </summary>
+            <param name="arg">账号信息</param>
+            <remarks>例如：
+            debug,111111
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.GenerateEncodedToken(System.String,WebApi.Controllers.UserInfo)">
+            <summary>
+            生成token
+            </summary>
+            <param name="sub"></param>
+            <param name="userInfo">携带的用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.LoginUserArgs">
+            <summary>
+            用户登录参数
+            </summary>
+        </member>
+        <member name="T:WebApi.Controllers.JwtTokenResult">
+            <summary>
+            登录成功返回model
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.JwtTokenResult.expires_in">
+            <summary>
+            过期时间(单位秒)
+            </summary>
+        </member>
+        <member name="T:WebApi.Controllers.UserInfo">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.UserNo">
+            <summary>
+            用户编号/工号
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.DepNo">
+            <summary>
+            操作员部门编号
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.DepName">
+            <summary>
+            操作员部门名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.JobNo">
+            <summary>
+            操作员岗位编号
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.JobName">
+            <summary>
+            操作员岗位名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.IpAddress">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.Port">
+            <summary>
+            端口
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.Mac">
+            <summary>
+            Mac
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.OnLineTime">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo.FWeComId">
+            <summary>
+            企业微信Id
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo._MessageUserRuleList">
+            <summary>
+            用户角色清单
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.UserInfo._MessageUserDataAuthList">
+            <summary>
+            用户数据权限清单
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.JwtConfig">
+            <summary>
+            jwt配置
+            </summary>
+        </member>
+        <member name="T:WebApi.Utils.ServiceConfig">
+            <summary>
+            接收消息体
+            </summary>
+        </member>
+        <member name="P:WebApi.Utils.ServiceConfig.User">
+            <summary>
+            帐号登录信息
+            </summary>
+        </member>
+        <member name="T:TokenActionFilter">
+            <summary>
+            用于获取用户信息
+            </summary>
+        </member>
+        <member name="T:GlobalExceptionFilter">
+            <summary>
+            全局异常过滤器
+            </summary>
+        </member>
+        <member name="T:GlobalExceptionFilter.ApiResult`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+    </members>
+</doc>
