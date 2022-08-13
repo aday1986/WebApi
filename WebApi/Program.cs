@@ -16,7 +16,7 @@ builder.Services.UseSwagger();
 builder.Services.UseJwt(builder.Configuration);
 
 builder.WebHost
-    .UseUrls("https://*:35001;http://*:35000")
+    .UseUrls("http://*:35000")
     .UseKestrel(options =>
     {
         //options.ConfigureHttpsDefaults(o =>
@@ -32,7 +32,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
