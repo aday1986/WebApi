@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.AuthController">
+            <summary>
+            权限Api
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.#ctor(Microsoft.Extensions.Options.IOptions{WebApi.Models.JwtConfig})">
+            <summary>
+            
+            </summary>
+            <param name="jwtConfig"></param>
+        </member>
+        <member name="P:WebApi.Controllers.AuthController.JwtConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.GetToken(WebApi.Models.LoginUserArgs)">
+            <summary>
+            根据用户账号和密码获取Token。
+            </summary>
+            <param name="arg">账号信息</param>
+            <remarks>例如：
+            debug,111111
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.GenerateEncodedToken(System.String,WebApi.Models.UserInfo)">
+            <summary>
+            生成token
+            </summary>
+            <param name="sub"></param>
+            <param name="userInfo">携带的用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.TestController">
+            <summary>
+            测试
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.TestController.#ctor(WebApi.Models.ServiceConfig)">
+            <summary>
+            测试
+            </summary>
+            <param name="serviceConfig"></param>
+        </member>
+        <member name="M:WebApi.Controllers.TestController.Test">
+            <summary>
+            测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Models.ApiResult`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:WebApi.Models.ApiResult`1.#ctor(`0,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="message"></param>
+            <param name="status"></param>
+        </member>
+        <member name="P:WebApi.Models.ApiResult`1.Status">
+            <summary>
+            返回代码
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult`1.Message">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ApiResult`1.Data">
+            <summary>
+            /返回数据
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.JwtConfig">
+            <summary>
+            jwt配置
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.JwtTokenResult">
+            <summary>
+            登录成功返回model
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.JwtTokenResult.Access_Token">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.JwtTokenResult.Refresh_Token">
+            <summary>
+            刷新token
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.JwtTokenResult.Expires_in">
+            <summary>
+            过期时间(单位秒)
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.JwtTokenResult.Token_Type">
+            <summary>
+            token 类型
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.JwtTokenResult.UserInfo">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.LoginUserArgs">
+            <summary>
+            用户登录参数
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.LoginUserArgs.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.LoginUserArgs.Pwd">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.ServiceConfig">
+            <summary>
+            接收消息体
+            </summary>
+        </member>
+        <member name="M:WebApi.Models.ServiceConfig.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="httpContext"></param>
+        </member>
+        <member name="P:WebApi.Models.ServiceConfig.User">
+            <summary>
+            帐号登录信息
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.UserInfo">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.UserNo">
+            <summary>
+            用户编号/工号
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.IpAddress">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.Port">
+            <summary>
+            端口
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.Mac">
+            <summary>
+            Mac
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.OnLineTime">
+            <summary>
+            最后登录时间
+            </summary>
+        </member>
+        <member name="T:WebApi.Utils.ServiceCollectionServiceExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApi.Utils.ServiceCollectionServiceExtensions.UseJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            使用JWT
+            </summary>
+            <param name="services"></param>
+            <param name="Configuration"></param>
+        </member>
+        <member name="M:WebApi.Utils.ServiceCollectionServiceExtensions.UseSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            使用Swagger
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:GlobalExceptionFilter">
+            <summary>
+            全局异常过滤器
+            </summary>
+        </member>
+        <member name="M:GlobalExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="P:GlobalExceptionFilter.LoggerFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GlobalExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:TokenActionFilter">
+            <summary>
+            用于获取用户信息
+            </summary>
+        </member>
+    </members>
+</doc>
