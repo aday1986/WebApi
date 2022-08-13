@@ -3,13 +3,20 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
-using WebApi.Controllers;
 using WebApi.Models;
 
 namespace WebApi.Utils
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static partial class ServiceCollectionServiceExtensions
     {
+        /// <summary>
+        /// 使用JWT
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="Configuration"></param>
         public static void UseJwt(this IServiceCollection services, IConfiguration Configuration)
         {
             services.AddHttpContextAccessor();
@@ -36,6 +43,10 @@ namespace WebApi.Utils
             services.AddScoped<ServiceConfig>();
         }
 
+        /// <summary>
+        /// 使用Swagger
+        /// </summary>
+        /// <param name="services"></param>
         public static void UseSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(options =>
@@ -57,7 +68,7 @@ namespace WebApi.Utils
                  });
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT授权(数据将在请求头中进行传输) 在下方输入Bearer {token} 即可，注意两者之间有空格",
+                    Description = "JWT授权,在下方输入Bearer Token",
                     Name = "Authorization",//jwt默认的参数名称
                     In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
                     Type = SecuritySchemeType.ApiKey,
@@ -75,33 +86,6 @@ namespace WebApi.Utils
                 options.IncludeXmlComments(xmlPath, true);
             });
         }
-
-    }
-
-    /// <summary>
-    /// 接收消息体
-    /// </summary>
-    public class ServiceConfig
-    {
-
-        public ServiceConfig(IHttpContextAccessor httpContext)
-        {
-            var user = httpContext.HttpContext.User;
-            User = new UserInfo()
-            {
-                UserNo = user.FindFirst("UserNo")?.Value,
-                UserName = user.FindFirst("UserName")?.Value,
-                DepName = user.FindFirst("DepName")?.Value,
-                DepNo = user.FindFirst("DepNo")?.Value,
-                JobName = user.FindFirst("JobName")?.Value,
-                JobNo = user.FindFirst("JobNo")?.Value,
-            };
-        }
-
-        /// <summary>
-        /// 帐号登录信息
-        /// </summary>
-        public UserInfo User { get; set; }
 
     }
 }
