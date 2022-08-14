@@ -45,11 +45,11 @@ namespace WebApi.Controllers
             return new ApiResult<WebOCRResult>(new WebOCRResult() { File = f, Text = result.Text });
         }
 
-        private FileContentResult ToFileContentResult(IFormFile file,OCRResult result)
+        private FileContentResult ToFileContentResult(IFormFile file,OCRResult ocrResult)
         {
 #pragma warning disable CA1416 // 验证平台兼容性
             var bt = new Bitmap(file.OpenReadStream());
-            foreach (var item in result.TextBlocks)
+            foreach (var item in ocrResult.TextBlocks)
             {
                 using (Graphics g = Graphics.FromImage(bt))
                 {
@@ -58,11 +58,10 @@ namespace WebApi.Controllers
             }
             var ms = new MemoryStream();
             bt.Save(ms, ImageFormat.Jpeg);
-            ms.Close();
 #pragma warning restore CA1416 // 验证平台兼容性
-            var f = new FileContentResult(ms.ToArray(), file.ContentType);
+            var fileResult = new FileContentResult(ms.ToArray(), file.ContentType);
             ms.Close();
-            return f;
+            return fileResult;
         }
 
         /// <summary>

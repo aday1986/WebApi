@@ -9,16 +9,11 @@
             权限Api
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.AuthController.#ctor(Microsoft.Extensions.Options.IOptions{WebApi.Models.JwtConfig})">
+        <member name="M:WebApi.Controllers.AuthController.#ctor(WebApi.Services.JwtTokenService)">
             <summary>
             
             </summary>
             <param name="jwtConfig"></param>
-        </member>
-        <member name="P:WebApi.Controllers.AuthController.JwtConfig">
-            <summary>
-            
-            </summary>
         </member>
         <member name="M:WebApi.Controllers.AuthController.GetToken(WebApi.Models.LoginUserArgs)">
             <summary>
@@ -28,14 +23,6 @@
             <remarks>例如：
             debug,111111
             </remarks>
-            <returns></returns>
-        </member>
-        <member name="M:WebApi.Controllers.AuthController.GenerateEncodedToken(System.String,WebApi.Models.UserInfo)">
-            <summary>
-            生成token
-            </summary>
-            <param name="sub"></param>
-            <param name="userInfo">携带的用户信息</param>
             <returns></returns>
         </member>
         <member name="T:WebApi.Controllers.OCRController">
@@ -197,6 +184,30 @@
             <summary>
             最后登录时间
             </summary>
+        </member>
+        <member name="T:WebApi.Services.JwtTokenService">
+            <summary>
+            JwtToken服务
+            </summary>
+        </member>
+        <member name="M:WebApi.Services.JwtTokenService.#ctor(Microsoft.Extensions.Options.IOptions{WebApi.Models.JwtConfig})">
+            <summary>
+            
+            </summary>
+            <param name="jwtConfig"></param>
+        </member>
+        <member name="P:WebApi.Services.JwtTokenService.JwtConfig">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="M:WebApi.Services.JwtTokenService.GenerateEncodedToken(System.String,WebApi.Models.UserInfo)">
+            <summary>
+            生成token
+            </summary>
+            <param name="sub"></param>
+            <param name="userInfo">携带的用户信息</param>
+            <returns></returns>
         </member>
         <member name="T:WebApi.Utils.ServiceCollectionServiceExtensions">
             <summary>

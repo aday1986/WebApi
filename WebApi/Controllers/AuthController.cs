@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -16,19 +17,16 @@ namespace WebApi.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="jwtConfig"></param>
-        public AuthController(IOptions<JwtConfig> jwtConfig)
-        {
-            JwtConfig = jwtConfig.Value;
-        }
+        private readonly JwtTokenService jwtService;
 
         /// <summary>
         /// 
         /// </summary>
-        public JwtConfig JwtConfig { get; }
+        /// <param name="jwtConfig"></param>
+        public AuthController(JwtTokenService jwtService)
+        {
+            this.jwtService = jwtService;
+        }
 
         /// <summary>
         /// 根据用户账号和密码获取Token。
@@ -50,44 +48,10 @@ namespace WebApi.Controllers
             {
                 throw new Exception($"[{arg.UserId}] 用户账号不存在或密码错误。");
             }
-            var refreshToken = Guid.NewGuid().ToString();
-            var jwtTokenResult = GenerateEncodedToken(arg.UserId, userInfo);
-            jwtTokenResult.Refresh_Token = refreshToken;
+            
+            var jwtTokenResult = jwtService.GenerateEncodedToken(arg.UserId, userInfo);
             return new ApiResult<JwtTokenResult>(jwtTokenResult);
         }
 
-        /// <summary>
-        /// 生成token
-        /// </summary>
-        /// <param name="sub"></param>
-        /// <param name="userInfo">携带的用户信息</param>
-        /// <returns></returns>
-        private  JwtTokenResult GenerateEncodedToken(string sub, UserInfo userInfo)
-        {
-            //创建用户身份标识
-            var claims = new List<Claim>
-            {
-                new Claim("UserNo", userInfo.UserNo??string.Empty),
-                new Claim("UserName", userInfo.UserName??string.Empty),
-                new Claim(JwtRegisteredClaimNames.Sub, sub),
-            };
-            //创建令牌
-            var jwt = new JwtSecurityToken(
-                issuer: JwtConfig.Issuer,
-                audience: JwtConfig.Audience,
-                claims: claims,
-                notBefore: JwtConfig.NotBefore,
-                expires: JwtConfig.Expiration,
-                signingCredentials: JwtConfig.SigningCredentials);
-
-            string access_token = new JwtSecurityTokenHandler().WriteToken(jwt);
-            return new JwtTokenResult()
-            {
-                Access_Token = access_token,
-                Expires_in = JwtConfig.Expired * 60,
-                Token_Type = JwtBearerDefaults.AuthenticationScheme,
-                //user = userInfo
-            };
-        }
     }
 }

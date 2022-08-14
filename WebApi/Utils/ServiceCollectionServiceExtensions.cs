@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Utils
 {
@@ -23,7 +24,9 @@ namespace WebApi.Utils
                 option.Filters.Add<GlobalExceptionFilter>();
                 option.Filters.Add<TokenActionFilter>();
             });
+            services.AddSingleton<JwtTokenService>();
             services.AddHttpContextAccessor();
+            services.AddScoped<ServiceConfig>();
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
             var jwtConfig = new JwtConfig();
             Configuration.Bind("JwtConfig", jwtConfig);
@@ -43,8 +46,6 @@ namespace WebApi.Utils
                         ValidateLifetime = true,
                     };
                 });
-           
-            services.AddScoped<ServiceConfig>();
         }
 
         /// <summary>
@@ -63,10 +64,9 @@ namespace WebApi.Utils
                         {
                             Reference = new OpenApiReference {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer",
-
-                            },
-                        },
+                            Id = "Bearer"
+                            }
+                        }, 
                     new string[] { }
                     }
                  });
@@ -81,8 +81,6 @@ namespace WebApi.Utils
 
                 });
                 #endregion
-
-
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
                 // 获取xml文件路径
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "Api.xml");
