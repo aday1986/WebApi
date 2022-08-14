@@ -40,20 +40,14 @@
         </member>
         <member name="T:WebApi.Controllers.OCRController">
             <summary>
-            测试
+            OCR图片识别
             </summary>
         </member>
         <member name="M:WebApi.Controllers.OCRController.#ctor(WebApi.Models.ServiceConfig)">
             <summary>
-            测试
+            OCR图片识别
             </summary>
             <param name="serviceConfig"></param>
-        </member>
-        <member name="M:WebApi.Controllers.OCRController.Test">
-            <summary>
-            测试
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.OCRController.DetectImage(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>

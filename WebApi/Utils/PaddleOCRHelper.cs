@@ -25,7 +25,6 @@ namespace WebApi.Utils
                                 numThread = 6,
                                 Enable_mkldnn = 1,
                                 det_db_score_mode = 0,
-                                visualize = 1,
                             };
                             OCRModelConfig config = null;
                             _Instance = new PaddleOCREngine(config, oCRParameter);

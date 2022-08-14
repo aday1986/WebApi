@@ -19,6 +19,10 @@ namespace WebApi.Utils
         /// <param name="Configuration"></param>
         public static void UseJwt(this IServiceCollection services, IConfiguration Configuration)
         {
+            services.AddControllers(option => {
+                option.Filters.Add<GlobalExceptionFilter>();
+                option.Filters.Add<TokenActionFilter>();
+            });
             services.AddHttpContextAccessor();
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
             var jwtConfig = new JwtConfig();
@@ -79,7 +83,7 @@ namespace WebApi.Utils
                 #endregion
 
 
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "MessageServerApi", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
                 // 获取xml文件路径
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "Api.xml");
                 // 添加控制器层注释，true表示显示控制器注释

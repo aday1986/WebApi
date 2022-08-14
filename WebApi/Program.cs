@@ -4,10 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var configuration = builder.Configuration;
-builder.Services.AddControllers(option => {
-    option.Filters.Add<GlobalExceptionFilter>();
-    option.Filters.Add<TokenActionFilter>();
-});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.UseSwagger();
 builder.Services.UseJwt(builder.Configuration);
