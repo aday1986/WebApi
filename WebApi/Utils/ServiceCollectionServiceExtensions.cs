@@ -71,7 +71,7 @@ namespace WebApi.Utils
                     Description = "JWT授权,在下方输入Bearer Token",
                     Name = "Authorization",//jwt默认的参数名称
                     In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
-                    Type = SecuritySchemeType.ApiKey,
+                    Type = SecuritySchemeType.Http,
                     BearerFormat = "JWT",
                     Scheme = "Bearer",
 

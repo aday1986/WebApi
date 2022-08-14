@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PaddleOCRSharp;
 using System.Drawing;
 using System.Drawing.Imaging;
 using WebApi.Models;
@@ -8,7 +9,7 @@ using WebApi.Utils;
 namespace WebApi.Controllers
 {
     /// <summary>
-    /// 测试
+    /// OCR图片识别
     /// </summary>
     [Authorize]
     [ApiController]
@@ -16,7 +17,7 @@ namespace WebApi.Controllers
     public partial class OCRController : Controller
     {
         /// <summary>
-        /// 测试
+        /// OCR图片识别
         /// </summary>
         /// <param name="serviceConfig"></param>
         public OCRController(ServiceConfig serviceConfig)
@@ -26,15 +27,6 @@ namespace WebApi.Controllers
 
         public ServiceConfig ServiceConfig { get; }
 
-        /// <summary>
-        /// 测试
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public string Test()
-        {
-            return DateTime.Now.ToString();
-        }
         /// <summary>
         /// 识别图片
         /// </summary>
@@ -49,6 +41,13 @@ namespace WebApi.Controllers
             }
             var bytes = StreamToBytes(file.OpenReadStream());
             var result = PaddleOCRHelper.Instance.DetectText(bytes);
+            var f = ToFileContentResult(file, result);
+            return new ApiResult<WebOCRResult>(new WebOCRResult() { File = f, Text = result.Text });
+        }
+
+        private FileContentResult ToFileContentResult(IFormFile file,OCRResult result)
+        {
+#pragma warning disable CA1416 // 验证平台兼容性
             var bt = new Bitmap(file.OpenReadStream());
             foreach (var item in result.TextBlocks)
             {
@@ -59,9 +58,11 @@ namespace WebApi.Controllers
             }
             var ms = new MemoryStream();
             bt.Save(ms, ImageFormat.Jpeg);
+            ms.Close();
+#pragma warning restore CA1416 // 验证平台兼容性
             var f = new FileContentResult(ms.ToArray(), file.ContentType);
             ms.Close();
-            return new ApiResult<WebOCRResult>(new WebOCRResult() { File = f, Text = result.Text });
+            return f;
         }
 
         /// <summary>
