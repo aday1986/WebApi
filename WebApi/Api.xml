@@ -38,22 +38,41 @@
             <param name="userInfo">携带的用户信息</param>
             <returns></returns>
         </member>
-        <member name="T:WebApi.Controllers.TestController">
+        <member name="T:WebApi.Controllers.OCRController">
             <summary>
             测试
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.TestController.#ctor(WebApi.Models.ServiceConfig)">
+        <member name="M:WebApi.Controllers.OCRController.#ctor(WebApi.Models.ServiceConfig)">
             <summary>
             测试
             </summary>
             <param name="serviceConfig"></param>
         </member>
-        <member name="M:WebApi.Controllers.TestController.Test">
+        <member name="M:WebApi.Controllers.OCRController.Test">
             <summary>
             测试
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.OCRController.DetectImage(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            识别图片
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.OCRController.StreamToBytes(System.IO.Stream)">
+            <summary>
+            stream转byte[]
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.OCRController.WebOCRResult">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:WebApi.Models.ApiResult`1">
             <summary>
