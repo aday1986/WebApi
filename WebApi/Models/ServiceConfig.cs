@@ -20,7 +20,7 @@
             {
                 User = new UserInfo()
                 {
-                    UserNo = user.FindFirst("UserNo")?.Value,
+                    UserId = user.FindFirst("UserId")?.Value,
                     UserName = user.FindFirst("UserName")?.Value,
                 };
             }

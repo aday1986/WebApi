@@ -24,9 +24,6 @@
         /// </summary>
         public string Token_Type { get; set; }
 
-        /// <summary>
-        /// 用户信息
-        /// </summary>
-        public UserInfo UserInfo { get; set; }
+
     }
 }

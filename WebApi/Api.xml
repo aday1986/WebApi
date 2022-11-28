@@ -9,13 +9,13 @@
             权限Api
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.AuthController.#ctor(WebApi.Services.JwtTokenService)">
+        <member name="M:WebApi.Controllers.AuthController.#ctor(WebApi.Services.JwtTokenService,WebApi.Services.AppDbContext)">
             <summary>
             
             </summary>
             <param name="jwtConfig"></param>
         </member>
-        <member name="M:WebApi.Controllers.AuthController.GetToken(WebApi.Models.LoginUserArgs)">
+        <member name="M:WebApi.Controllers.AuthController.Login(WebApi.Models.LoginUserArgs)">
             <summary>
             根据用户账号和密码获取Token。
             </summary>
@@ -23,6 +23,28 @@
             <remarks>例如：
             debug,111111
             </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.RefreshToken(System.String)">
+            <summary>
+            刷新Token
+            </summary>
+            <param name="refreshToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.Register(WebApi.Models.UserInfo)">
+            <summary>
+            注册
+            </summary>
+            <param name="userInfo"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:WebApi.Controllers.AuthController.MD5Encrypt64(System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="str"></param>
             <returns></returns>
         </member>
         <member name="T:WebApi.Controllers.OCRController">
@@ -114,11 +136,6 @@
             token 类型
             </summary>
         </member>
-        <member name="P:WebApi.Models.JwtTokenResult.UserInfo">
-            <summary>
-            用户信息
-            </summary>
-        </member>
         <member name="T:WebApi.Models.LoginUserArgs">
             <summary>
             用户登录参数
@@ -155,9 +172,14 @@
             用户信息
             </summary>
         </member>
-        <member name="P:WebApi.Models.UserInfo.UserNo">
+        <member name="P:WebApi.Models.UserInfo.UserId">
             <summary>
-            用户编号/工号
+            用户账号Id
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.UserInfo.Pwd">
+            <summary>
+            密码
             </summary>
         </member>
         <member name="P:WebApi.Models.UserInfo.UserName">
@@ -165,25 +187,22 @@
             用户名称
             </summary>
         </member>
-        <member name="P:WebApi.Models.UserInfo.IpAddress">
+        <member name="T:WebApi.Services.AppDbContext">
             <summary>
-            IP
+            EF
             </summary>
         </member>
-        <member name="P:WebApi.Models.UserInfo.Port">
+        <member name="M:WebApi.Services.AppDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
-            端口
+            
             </summary>
+            <param name="options"></param>
         </member>
-        <member name="P:WebApi.Models.UserInfo.Mac">
+        <member name="M:WebApi.Services.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
-            Mac
+            
             </summary>
-        </member>
-        <member name="P:WebApi.Models.UserInfo.OnLineTime">
-            <summary>
-            最后登录时间
-            </summary>
+            <param name="builder"></param>
         </member>
         <member name="T:WebApi.Services.JwtTokenService">
             <summary>
@@ -201,6 +220,11 @@
             配置文件
             </summary>
         </member>
+        <member name="P:WebApi.Services.JwtTokenService.TokenCache">
+            <summary>
+            用于Token刷新，待实现
+            </summary>
+        </member>
         <member name="M:WebApi.Services.JwtTokenService.GenerateEncodedToken(System.String,WebApi.Models.UserInfo)">
             <summary>
             生成token
@@ -208,6 +232,14 @@
             <param name="sub"></param>
             <param name="userInfo">携带的用户信息</param>
             <returns></returns>
+        </member>
+        <member name="M:WebApi.Services.JwtTokenService.RefreshToken(System.String)">
+            <summary>
+            根据refresh_Token刷新JwtToken
+            </summary>
+            <param name="refresh_Token"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="T:WebApi.Utils.ServiceCollectionServiceExtensions">
             <summary>

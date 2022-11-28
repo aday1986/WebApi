@@ -44,6 +44,11 @@ namespace WebApi.Utils
                         ValidAudience = jwtConfig.Audience,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecretKey)),
                         ValidateLifetime = true,
+                        //这里采用动态验证的方式，在重新登陆时，刷新token，旧token就强制失效了
+                        AudienceValidator = (m, n, z) =>
+                        {
+                            return true;
+                        },
                     };
                 });
         }
