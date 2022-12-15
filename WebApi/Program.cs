@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Services;
 using WebApi.Utils;
+using App;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,9 @@ var configuration = builder.Configuration;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.UseSwagger();
 builder.Services.UseJwt(builder.Configuration);
+builder.Services.AddSingleton<ICompiler, Compiler>();
+builder.Services.AddSingleton<DynamicChangeTokenProvider>();
+builder.Services.AddSingleton<IActionDescriptorChangeProvider>(provider => provider.GetRequiredService<DynamicChangeTokenProvider>());
 InMemoryDatabaseRoot _databaseRoot = new InMemoryDatabaseRoot();
 string _connectionString = Guid.NewGuid().ToString();
 builder.Services.AddEntityFrameworkInMemoryDatabase();
