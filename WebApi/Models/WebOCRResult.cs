@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PaddleOCRSharp;
 
 namespace WebApi.Controllers
 {
@@ -10,7 +11,7 @@ namespace WebApi.Controllers
         public class WebOCRResult
         {
             public string Text { get; set; }
-
+            public List<TextBlock> TextBlocks { get; set; } = new List<TextBlock>();
             public FileContentResult File { get; set; }
         }
     }

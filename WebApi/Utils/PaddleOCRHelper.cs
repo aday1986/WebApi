@@ -25,8 +25,17 @@ namespace WebApi.Utils
                                 numThread = 6,
                                 Enable_mkldnn = 1,
                                 det_db_score_mode = 0,
+                                  visualize=1, 
                             };
                             OCRModelConfig config = null;
+                            //服务器中英文模型
+                            //OCRModelConfig config = new OCRModelConfig();
+                            //string root = System.IO.Path.GetDirectoryName(typeof(OCRModelConfig).Assembly.Location);
+                            //string modelPathroot = root + @"\inferenceserver";
+                            //config.det_infer = modelPathroot + @"\ch_ppocr_server_v2.0_det_infer";
+                            //config.cls_infer = modelPathroot + @"\ch_ppocr_mobile_v2.0_cls_infer";
+                            //config.rec_infer = modelPathroot + @"\ch_ppocr_server_v2.0_rec_infer";
+                            //config.keys = modelPathroot + @"\ppocr_keys.txt";
                             _Instance = new PaddleOCREngine(config, oCRParameter);
                         }
                     }

@@ -11,7 +11,7 @@ namespace WebApi.Controllers
     /// <summary>
     /// OCRÍ¼Æ¬Ê¶±ð
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public partial class OCRController : Controller
@@ -42,7 +42,7 @@ namespace WebApi.Controllers
             var bytes = StreamToBytes(file.OpenReadStream());
             var result = PaddleOCRHelper.Instance.DetectText(bytes);
             var f = ToFileContentResult(file, result);
-            return new ApiResult<WebOCRResult>(new WebOCRResult() { File = f, Text = result.Text });
+            return new ApiResult<WebOCRResult>(new WebOCRResult() { File = f, Text = result.Text, TextBlocks=result.TextBlocks });
         }
 
         private FileContentResult ToFileContentResult(IFormFile file,OCRResult ocrResult)

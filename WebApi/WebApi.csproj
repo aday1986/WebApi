@@ -7,7 +7,7 @@
     <UserSecretsId>deac2314-a06d-4565-afc4-af608982d4af</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>D:\Codes\WebApi\WebApi\Api.xml</DocumentationFile>
+    <DocumentationFile>Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,7 +25,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.8" />
-    <PackageReference Include="PaddleOCRSharp" Version="2.0.3" />
+    <PackageReference Include="PaddleOCRSharp" Version="2.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -43,6 +43,158 @@
 
   <ItemGroup>
     <Folder Include="SSL\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\concrt140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\libiomp5md.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mfc140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mfcm140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mkldnn.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mklml.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_2.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_atomic_wait.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_codecvt_ids.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\opencv_world411.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\paddle_inference.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\PaddleOCR.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcamp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vccorlib140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcomp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcruntime140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcruntime140_1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\concrt140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\libiomp5md.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mfc140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mfcm140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mkldnn.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\mklml.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_2.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_atomic_wait.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\msvcp140_codecvt_ids.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\opencv_world411.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\paddle_inference.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\PaddleOCR.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcamp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vccorlib140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcomp140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcruntime140.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Administrator\.nuget\packages\paddleocrsharp\2.1.0\build\PaddleOCRLib\vcruntime140_1.dll" />
   </ItemGroup>
 
 </Project>
