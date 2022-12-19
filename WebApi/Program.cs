@@ -24,7 +24,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase(_connectionString, _databaseRoot);
 });
 builder.WebHost
-    //.UseUrls("http://*:5000;https://*:5001")
+    .UseUrls("http://*:5000;https://*:5001")
     .UseKestrel(options =>
     {
         //options.ConfigureHttpsDefaults(o =>

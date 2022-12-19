@@ -25,7 +25,7 @@ namespace WebApi.Utils
                                 numThread = 6,
                                 Enable_mkldnn = 1,
                                 det_db_score_mode = 0,
-                                  visualize=1, 
+                                visualize = 1,
                             };
                             OCRModelConfig config = null;
                             //服务器中英文模型
