@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -11,11 +12,19 @@ namespace WebApi.Controllers
     public class ChatGPTController : Controller
     {
         static HttpClient client;
-        static ChatGPTController()
+
+
+
+        public static void Init(string key)
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
+            client.DefaultRequestHeaders.Add($"Authorization", $"Bearer {key}");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
+        }
+        static ChatGPTController()
+        {
+
+           
         }
         /// <summary>
         /// 

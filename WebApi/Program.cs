@@ -4,12 +4,13 @@ using WebApi.Services;
 using WebApi.Utils;
 using App;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var configuration = builder.Configuration;
-
+ChatGPTController.Init(configuration.GetValue<string>("OpenApiKey"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.UseSwagger();
 builder.Services.UseJwt(builder.Configuration);
