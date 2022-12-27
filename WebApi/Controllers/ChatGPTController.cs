@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         static ChatGPTController()
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
         }
         /// <summary>
