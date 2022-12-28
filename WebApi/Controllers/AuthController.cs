@@ -21,10 +21,11 @@ namespace WebApi.Controllers
         private readonly JwtTokenService jwtService;
         private readonly AppDbContext appDb;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="jwtConfig"></param>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="jwtService"></param>
+       /// <param name="appDb"></param>
         public AuthController(JwtTokenService jwtService, AppDbContext appDb)
         {
             this.jwtService = jwtService;

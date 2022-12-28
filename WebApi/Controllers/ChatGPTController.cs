@@ -11,11 +11,15 @@ namespace WebApi.Controllers
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ChatGPTController : Controller
     {
         private HttpClient client;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
         public ChatGPTController(ConfigurationManager configuration)
         {
             var key = configuration.GetValue<string>("OpenApiKey");
@@ -23,7 +27,6 @@ namespace WebApi.Controllers
             client.DefaultRequestHeaders.Add($"Authorization", $"Bearer {key}");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
         }
-
 
         /// <summary>
         /// 
@@ -35,8 +38,7 @@ namespace WebApi.Controllers
         public async Task<ApiResult<Rootobject>> Completions(string text)
         {
             var arg = new { prompt = text, model = "text-davinci-003", max_tokens = 2048 };
-
-            HttpResponseMessage response = await client.PostAsJsonAsync("https://api.openai.com/v1/completions", arg);
+            var response = await client.PostAsJsonAsync("https://api.openai.com/v1/completions", arg);
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<Rootobject>();
@@ -50,7 +52,6 @@ namespace WebApi.Controllers
         }
 
         #region Model
-
 
         public class Rootobject
         {
