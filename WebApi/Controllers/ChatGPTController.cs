@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using WebApi.Models;
 
@@ -9,18 +11,19 @@ namespace WebApi.Controllers
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
+    //[Authorize]
     public class ChatGPTController : Controller
     {
-        static HttpClient client;
+        private HttpClient client;
 
-
-
-        public static void Init(string key)
+        public ChatGPTController(ConfigurationManager configuration)
         {
+            var key = configuration.GetValue<string>("OpenApiKey");
             client = new HttpClient();
             client.DefaultRequestHeaders.Add($"Authorization", $"Bearer {key}");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
         }
+
 
         /// <summary>
         /// 

@@ -4,6 +4,11 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="T:WebApi.Controllers.ApiManangeController">
+            <summary>
+            动态API接口
+            </summary>
+        </member>
         <member name="T:WebApi.Controllers.AuthController">
             <summary>
             权限Api

@@ -1,4 +1,5 @@
 ﻿using App;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System.IO;
@@ -7,8 +8,12 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    /// <summary>
+    /// 动态API接口
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class ApiManangeController : Controller
     {
         public ApiManangeController(ApplicationPartManager manager, ICompiler compiler, DynamicChangeTokenProvider tokenProvider)
