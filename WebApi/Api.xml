@@ -47,32 +47,40 @@
             <param name="str"></param>
             <returns></returns>
         </member>
-        <member name="T:WebApi.Controllers.OCRController">
+        <member name="T:WebApi.Controllers.ChatGPTController">
             <summary>
-            OCR图片识别
+            ChatGPT
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.OCRController.#ctor(WebApi.Models.ServiceConfig)">
+        <member name="M:WebApi.Controllers.ChatGPTController.Completions(System.String)">
             <summary>
-            OCR图片识别
+            
             </summary>
-            <param name="serviceConfig"></param>
-        </member>
-        <member name="M:WebApi.Controllers.OCRController.DetectImage(Microsoft.AspNetCore.Http.IFormFile)">
-            <summary>
-            识别图片
-            </summary>
-            <param name="file"></param>
+            <param name="text"></param>
             <returns></returns>
+            <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:WebApi.Controllers.OCRController.StreamToBytes(System.IO.Stream)">
+        <member name="P:WebApi.Controllers.ChatGPTController.Error.message">
             <summary>
-            stream转byte[]
+            
             </summary>
-            <param name="stream"></param>
-            <returns></returns>
         </member>
-        <member name="T:WebApi.Controllers.OCRController.WebOCRResult">
+        <member name="P:WebApi.Controllers.ChatGPTController.Error.type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.ChatGPTController.Error.param">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.ChatGPTController.Error.code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WebApi.Controllers.ChatGPTController.ErrorRoot.error">
             <summary>
             
             </summary>

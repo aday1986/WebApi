@@ -4,12 +4,13 @@ using WebApi.Services;
 using WebApi.Utils;
 using App;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using WebApi.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var configuration = builder.Configuration;
-
+ChatGPTController.Init(configuration.GetValue<string>("OpenApiKey"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.UseSwagger();
 builder.Services.UseJwt(builder.Configuration);
@@ -24,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseInMemoryDatabase(_connectionString, _databaseRoot);
 });
 builder.WebHost
-    .UseUrls("http://*:5000;https://*:5001")
+    .UseUrls("http://*:5000")
     .UseKestrel(options =>
     {
         //options.ConfigureHttpsDefaults(o =>
