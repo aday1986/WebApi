@@ -24,6 +24,12 @@ namespace WebApi.Controllers
         [HttpPost]
         public ApiResult<string> Add(string source)
         {
+            source = @$"
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using System.Reflection;
+
+" + source;
             Manager.ApplicationParts.Add(new AssemblyPart(Compiler.Compile(source, Assembly.Load(new AssemblyName("System.Runtime")),
                 typeof(object).Assembly,
                 typeof(ControllerBase).Assembly,
@@ -36,7 +42,7 @@ namespace WebApi.Controllers
 
 //[Route("api/[controller]/[action]")]
 //[ApiController]
-//public class TestController: Controller
+//public class TestController : Controller
 //{
 //    public string Add()
 //    {
