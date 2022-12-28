@@ -18,7 +18,8 @@
             <summary>
             
             </summary>
-            <param name="jwtConfig"></param>
+            <param name="jwtService"></param>
+            <param name="appDb"></param>
         </member>
         <member name="M:WebApi.Controllers.AuthController.Login(WebApi.Models.LoginUserArgs)">
             <summary>
@@ -56,6 +57,12 @@
             <summary>
             ChatGPT
             </summary>
+        </member>
+        <member name="M:WebApi.Controllers.ChatGPTController.#ctor(Microsoft.Extensions.Configuration.ConfigurationManager)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
         </member>
         <member name="M:WebApi.Controllers.ChatGPTController.Completions(System.String)">
             <summary>
