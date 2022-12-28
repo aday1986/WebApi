@@ -19,6 +19,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SSL\**" />
+    <Content Remove="SSL\**" />
+    <EmbeddedResource Remove="SSL\**" />
+    <None Remove="SSL\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.4.0" />
@@ -35,13 +42,6 @@
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="SSL\7705714_www.zkbar.cn.pfx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SSL\" />
   </ItemGroup>
 
   <ItemGroup>

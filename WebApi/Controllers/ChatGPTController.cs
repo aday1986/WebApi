@@ -21,11 +21,7 @@ namespace WebApi.Controllers
             client.DefaultRequestHeaders.Add($"Authorization", $"Bearer {key}");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
         }
-        static ChatGPTController()
-        {
 
-           
-        }
         /// <summary>
         /// 
         /// </summary>
