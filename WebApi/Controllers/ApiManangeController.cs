@@ -30,10 +30,12 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System.Reflection;
 
 " + source;
-            Manager.ApplicationParts.Add(new AssemblyPart(Compiler.Compile(source, Assembly.Load(new AssemblyName("System.Runtime")),
+            var ass = new AssemblyPart(Compiler.Compile(source, Assembly.Load(new AssemblyName("System.Runtime")),
                 typeof(object).Assembly,
                 typeof(ControllerBase).Assembly,
-                typeof(Controller).Assembly)));
+                typeof(Controller).Assembly));
+           
+            Manager.ApplicationParts.Add(ass);
             TokenProvider.NotifyChanges();
             return new ApiResult<string>("");
         }
