@@ -4,6 +4,11 @@
         <name>WebApi</name>
     </assembly>
     <members>
+        <member name="T:WebApi.Controllers.ApiManangeController">
+            <summary>
+            动态API接口
+            </summary>
+        </member>
         <member name="T:WebApi.Controllers.AuthController">
             <summary>
             权限Api
@@ -13,7 +18,8 @@
             <summary>
             
             </summary>
-            <param name="jwtConfig"></param>
+            <param name="jwtService"></param>
+            <param name="appDb"></param>
         </member>
         <member name="M:WebApi.Controllers.AuthController.Login(WebApi.Models.LoginUserArgs)">
             <summary>
@@ -51,6 +57,12 @@
             <summary>
             ChatGPT
             </summary>
+        </member>
+        <member name="M:WebApi.Controllers.ChatGPTController.#ctor(Microsoft.Extensions.Configuration.ConfigurationManager)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
         </member>
         <member name="M:WebApi.Controllers.ChatGPTController.Completions(System.String)">
             <summary>
@@ -193,6 +205,22 @@
         <member name="P:WebApi.Models.UserInfo.UserName">
             <summary>
             用户名称
+            </summary>
+        </member>
+        <member name="T:WebApi.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:WebApi.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:WebApi.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性，对
+              使用此强类型资源类的所有资源查找执行重写。
             </summary>
         </member>
         <member name="T:WebApi.Services.AppDbContext">

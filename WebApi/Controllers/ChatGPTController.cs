@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using WebApi.Models;
 
@@ -9,23 +11,23 @@ namespace WebApi.Controllers
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class ChatGPTController : Controller
     {
-        static HttpClient client;
+        private HttpClient client;
 
-
-
-        public static void Init(string key)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
+        public ChatGPTController(ConfigurationManager configuration)
         {
+            var key = configuration.GetValue<string>("OpenApiKey");
             client = new HttpClient();
             client.DefaultRequestHeaders.Add($"Authorization", $"Bearer {key}");
             client.DefaultRequestHeaders.Add("OpenAI-Organization", "org-x0NYEXo7lKXltCfhaTyEvoe6");
         }
-        static ChatGPTController()
-        {
 
-           
-        }
         /// <summary>
         /// 
         /// </summary>
@@ -36,8 +38,7 @@ namespace WebApi.Controllers
         public async Task<ApiResult<Rootobject>> Completions(string text)
         {
             var arg = new { prompt = text, model = "text-davinci-003", max_tokens = 2048 };
-
-            HttpResponseMessage response = await client.PostAsJsonAsync("https://api.openai.com/v1/completions", arg);
+            var response = await client.PostAsJsonAsync("https://api.openai.com/v1/completions", arg);
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<Rootobject>();
@@ -51,7 +52,6 @@ namespace WebApi.Controllers
         }
 
         #region Model
-
 
         public class Rootobject
         {
